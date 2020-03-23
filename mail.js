@@ -1,5 +1,8 @@
-var sendmail = require('sendmail')()
-
+const CONFIG = {
+  smtpHost: 'leoltl-mail-test.herokuapp.com',
+  smtpPort: '25'
+}
+var sendmail = require('sendmail')(CONFIG)
 module.exports = async function send({
   from='no-reply@leoleesite.com', 
   to='tl.leolee@gmail.com', 

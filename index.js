@@ -16,14 +16,16 @@ app.get('/', (req, res) => {
 })
 
 app.post('/send', async (req, res) => {
+  var to      = req.body.email,
+      subject = req.body.subject, 
+      html    = req.body.message
   try {
     var status = await send({
-        to: req.body.email,
-        subject: req.body.subject,
-        html: req.body.message
+        to,
+        subject,
+        html
     });
     if (status instanceof Error) throw status 
-
     res.render('result', { err: null });
   } catch(err) {
     res.render('result', { err });
