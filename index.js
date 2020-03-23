@@ -9,7 +9,7 @@ app.get('/send', async (req, res) => {
 
   await sendmail({
     from: 'no-reply@leoleesite.com',
-    to: 'test-nwmue30jh@mail-tester.com',
+    to: 'tl.leolee@outlook.com',
     subject: 'MailComposer sendmail',
     html: 'Mail of test sendmail '
     }, function (err, reply) {
