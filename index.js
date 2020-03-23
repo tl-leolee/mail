@@ -2,17 +2,35 @@ var express = require('express');
 
 var app = express();
 
+var bodyParser = require('body-parser');
+
 var send = require('./mail')
 
 
 const PORT = process.env.PORT || 3000
 
-app.get('/send', async (req, res) => {
-  await send({
-    to: 'tl.leolee@outlook.com',
-    html:'Hello Leo. This is a message from mail composer. Please reach out to me at 881773211. Thanks. Leo'
-  });
-  res.sendStatus(200)
+
+app.set('view engine', 'ejs')
+
+app.use(bodyParser.json()); 
+app.use(bodyParser.urlencoded({ extended: true })); 
+
+app.get('/', (req, res) => {
+  res.render('index');
+})
+
+app.post('/send', async (req, res) => {
+  
+  try {
+    await send({
+      to: req.body.email,
+      subject: req.body.subject,
+      html: req.body.message
+    });
+    res.sendStatus(200);
+  } catch(e) {
+    res.sendStatus(500);
+  }
 })
 
 app.listen(PORT, () => {
