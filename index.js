@@ -34,7 +34,7 @@ app.post('/send', async (req, res) => {
 
     await new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve()
+        reject(new Error('haha jokes on you'))
       }, 5000)
     })
     
