@@ -9,10 +9,10 @@ var defaultOpt = {
 
 module.exports = async function send(options=defaultOpt) {
   sendmail({
-    from,
-    to,
-    subject,
-    html,
+    from:options.from,
+    to:options.to,
+    subject:options.subject,
+    html:options.html,
   }, function (err, reply) {
     console.log(err && err.stack)
     console.dir(reply)
