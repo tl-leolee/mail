@@ -4,17 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    .form {
+      width: 300px;
+      margin: 0 auto;
+      border: 1px solid red;
+    }
+  </style>
 </head>
 <body>
-  <form action="/send" method="POST">
-    <label for="email">Send To:</label>
-    <input name="email" />
-    <label for="subject">Subject:</label>
-    <input name="subject" />
-    <label for="message">Message:</label>
-    <textarea name="message"></textarea>
-
-    <input type="submit">
-  </form>
+  <% if (success) {%>
+    Success
+  <% } else {%>
+  <%- include ('partials/form.ejs') %>
+  <% } %>
 </body>
 </html>

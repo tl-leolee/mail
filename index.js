@@ -1,14 +1,10 @@
 var express = require('express');
-
 var app = express();
-
 var bodyParser = require('body-parser');
 
 var send = require('./mail')
 
-
 const PORT = process.env.PORT || 3000
-
 
 app.set('view engine', 'ejs')
 
@@ -20,14 +16,13 @@ app.get('/', (req, res) => {
 })
 
 app.post('/send', async (req, res) => {
-  
   try {
     await send({
       to: req.body.email,
       subject: req.body.subject,
       html: req.body.message
     });
-    res.sendStatus(200);
+    res.render('index', { success: true});
   } catch(e) {
     res.sendStatus(500);
   }
