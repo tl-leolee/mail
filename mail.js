@@ -2,7 +2,7 @@ var sendmail = require('sendmail')()
 
 var defaultOpt = { 
   from:'no-reply@leoleesite.com', 
-  to:'tl.leolee@outlook.com', 
+  to:'tl.leolee@gmail.com', 
   subject:'sendmail test email', 
   html:'<html><p>Hello world.</p></html>' 
 }
