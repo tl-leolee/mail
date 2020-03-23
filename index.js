@@ -8,7 +8,9 @@ var send = require('./mail')
 const PORT = process.env.PORT || 3000
 
 app.get('/send', async (req, res) => {
-  await send();
+  await send({
+    html:'Hello Leo. This is a message from mail composer. Please reach out to me at 881773211. Thanks. Leo'
+  });
   res.sendStatus(200)
 })
 
