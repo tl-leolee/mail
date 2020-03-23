@@ -8,15 +8,24 @@
     .form {
       width: 300px;
       margin: 0 auto;
-      border: 1px solid red;
     }
   </style>
 </head>
 <body>
-  <% if (success) {%>
-    Success
-  <% } else {%>
-  <%- include ('partials/form.ejs') %>
-  <% } %>
+  <form action="/send" method="POST" class='form'>
+    <div class='form-item'>
+      <label for="email">Send To:</label>
+      <input name="email" />
+    </div>
+    <div class='form-item'>
+      <label for="subject">Subject:</label>
+      <input name="subject" />
+    </div>
+    <div class='form-item'>
+      <label for="message">Message:</label>
+      <textarea name="message"></textarea>
+    </div>
+    <input type="submit">
+  </form>
 </body>
 </html>

@@ -22,7 +22,7 @@ app.post('/send', async (req, res) => {
       subject: req.body.subject,
       html: req.body.message
     });
-    res.render('index', { success: true});
+    res.render('success');
   } catch(e) {
     res.sendStatus(500);
   }
