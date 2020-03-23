@@ -13,9 +13,8 @@ module.exports = async function send({
       subject,
       html,
     }, function (err, reply) {
-      console.log(err && err.stack)
       if (err) {
-        console.log('I CAUGHT THE ERROR')
+        console.log(err && err.stack)
         reject(err)
       }
       console.dir(reply)

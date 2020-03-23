@@ -22,13 +22,11 @@ app.post('/send', async (req, res) => {
         subject: req.body.subject,
         html: req.body.message
     });
-
     if (status instanceof Error) throw status 
 
-    res.render('success');
-  } catch(e) {
-    console.log(e)
-    res.sendStatus(500);
+    res.render('result', { err: null });
+  } catch(err) {
+    res.render('result', { err });
   }
 })
 

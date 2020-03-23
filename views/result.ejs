@@ -13,6 +13,10 @@
   </style>
 </head>
 <body>
-  Email sent
+  <%if (!err) { %>
+    Email sent
+  <%} else { %>
+    <%= err %>
+  <%} %>
 </body>
 </html>
