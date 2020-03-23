@@ -4,11 +4,12 @@ const CONFIG = {
 }
 var sendmail = require('sendmail')(CONFIG)
 module.exports = async function send({
-  from='no-reply@leoleesite.com', 
-  to='tl.leolee@gmail.com', 
+  from='no-reply@leolee.site', 
   subject='MailComposer sendmail', 
-  html='<html><p>Mail of test sendmail</p></html>' 
+  html='<html><p>Mail of test sendmail</p></html>',
+  to
 }) {
+  if (!to) throw Error('Recipient is required.')
   return new Promise((resolve, reject) => {
       sendmail({
       from,
