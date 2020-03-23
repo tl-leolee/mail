@@ -17,27 +17,14 @@ app.get('/', (req, res) => {
 
 app.post('/send', async (req, res) => {
   try {
-    // await new Promise((resolve, reject) => {
-    //   send({
-    //     to: req.body.email,
-    //     subject: req.body.subject,
-    //     html: req.body.message
-    //   }, function(err, reply) {
-    //     console.log(err && err.stack);
-    //     if (err) {
-    //       reject(new Error(err))
-    //     }
-    //     resolve(reply)
-    //     console.dir(reply);
-    //   })
-    // });
+    var status = await send({
+        to: req.body.email,
+        subject: req.body.subject,
+        html: req.body.message
+    });
 
-    await new Promise((resolve, reject) => {
-      setTimeout(() => {
-        reject(new Error('haha jokes on you'))
-      }, 5000)
-    })
-    
+    if (status instanceof Error) throw status 
+
     res.render('success');
   } catch(e) {
     console.log(e)

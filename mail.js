@@ -6,13 +6,20 @@ module.exports = async function send({
   subject='MailComposer sendmail', 
   html='<html><p>Mail of test sendmail</p></html>' 
 }) {
-  sendmail({
-    from,
-    to,
-    subject,
-    html,
-  }, function (err, reply) {
-    console.log(err && err.stack)
-    console.dir(reply)
+  return new Promise((resolve, reject) => {
+      sendmail({
+      from,
+      to,
+      subject,
+      html,
+    }, function (err, reply) {
+      console.log(err && err.stack)
+      if (err) {
+        console.log('I CAUGHT THE ERROR')
+        reject(err)
+      }
+      console.dir(reply)
+      resolve(reply)
+    })
   })
 }
